@@ -1,12 +1,14 @@
-package com.adhass.creators.squadgames;
+package com.adhass.creators.squadgames.model;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by adityanadkarni on 8/8/17.
  */
 
-public class Game {
+public class Game implements Serializable{
     private String title;
     private double rating;
     private int coverImage;

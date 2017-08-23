@@ -1,11 +1,16 @@
 package com.adhass.creators.squadgames;
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.adhass.creators.squadgames.listeners.OnCardClickedListener;
+import com.adhass.creators.squadgames.model.Game;
 
 import java.util.List;
 
@@ -16,9 +21,11 @@ import java.util.List;
 public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHolder> {
 
     private List<Game> games;
+    private OnCardClickedListener listener;
 
-    GameListAdapter(List<Game> games) {
+    public GameListAdapter(List<Game> games, OnCardClickedListener listener) {
         this.games = games;
+        this.listener = listener;
     }
 
 
@@ -31,9 +38,15 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.gameTitle.setText(games.get(position).getTitle());
         holder.gameRating.setText(String.valueOf(games.get(position).getRating()));
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(view, position);
+            }
+        });
     }
 
     @Override
@@ -41,13 +54,17 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
         return games.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         TextView gameTitle;
         TextView gameRating;
+        View view;
         ViewHolder(View view) {
             super(view);
+            this.view = view;
             gameTitle = (TextView) view.findViewById(R.id.board_game_title);
             gameRating = (TextView) view.findViewById(R.id.board_game_rating);
         }
+
     }
+
 }

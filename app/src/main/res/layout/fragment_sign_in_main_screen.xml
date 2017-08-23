@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_in"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adhass.creators.squadgames.controllers.SignInActivity"
+    android:orientation="vertical"
+    android:background="#B8FFFF">
+
+    <TextView
+        android:text="SquadGames"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:id="@+id/textView"
+        android:layout_weight="5"
+        />
+
+    <TextView
+        android:text="Find your board game adventure."
+        android:fontFamily="casual"
+        android:textStyle="italic"
+        android:textSize="40sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:id="@+id/textView2"
+        android:layout_weight="3"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="4">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="#C2E6F0"
+            android:text="Register"
+            android:id="@+id/first_register_button"
+            android:textColor="@android:color/black" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:background="#C2E6F0"
+            android:text="Login"
+            android:id="@+id/first_login_button"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+
+</LinearLayout>
