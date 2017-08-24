@@ -22,6 +22,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:fontFamily="casual"
+            android:text="PlaceholderTitle"
             android:id="@+id/gameViewTitle" />
     </LinearLayout>
 
@@ -60,11 +61,7 @@
             <TextView
                 android:layout_column="1"
                 android:text=""/>
-            <TextView
-                android:layout_column="2"
-                android:text="Hello"/>
         </TableRow>
-
 
     </TableLayout>
 
