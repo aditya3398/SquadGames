@@ -40,7 +40,10 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.gameTitle.setText(games.get(position).getTitle());
-        holder.gameRating.setText(String.valueOf(games.get(position).getRating()));
+        holder.gameRating.setText(String.valueOf(games.get(position)
+                .getRating()
+                .getRatingAverage()
+                .getValue()));
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

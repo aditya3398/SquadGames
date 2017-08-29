@@ -1,28 +1,38 @@
 package com.adhass.creators.squadgames.model;
 
-import com.google.gson.annotations.SerializedName;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+
+import java.io.InputStream;
 import java.io.Serializable;
+import java.net.URL;
 
-/**
- * Created by adityanadkarni on 8/8/17.
- */
-
-public class Game implements Serializable{
+public class Game implements Serializable {
+    @Element(name = "name")
     private String title;
-    private double rating;
-    private int coverImage;
+    @Element(name = "stats")
+    private Rating rating;
+    @Element(name = "image")
+    private String coverImage;
 
-    public Game(String title, double rating) {
+    public Game(String title, Rating rating) {
         this.title = title;
         this.rating = rating;
     }
 
-    public double getRating() {
+    public Game(String title, int rating) {
+        this.title = title;
+        this.rating = new Rating(new RatingAverage(rating));
+    }
+
+    public Rating getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Rating rating) {
         this.rating = rating;
     }
 
@@ -34,11 +44,27 @@ public class Game implements Serializable{
         this.title = title;
     }
 
-    public int getCoverImage() {
-        return coverImage;
+    public Drawable getCoverImage() {
+        if (coverImage != null) {
+            try {
+                InputStream inputStream = (InputStream) new URL(coverImage).getContent();
+                return Drawable.createFromStream(inputStream, title);
+            } catch (Exception e) {
+                Log.e(e.getClass().getSimpleName(), e.getMessage());
+                return null;
+            }
+
+        }
+        return null;
+
     }
 
-    public void setCoverImage(int coverImage) {
-        this.coverImage = coverImage;
+    public void setCoverImage(String coverImageURL) {
+        this.coverImage = coverImageURL;
     }
+
+    /**
+     * Created by adityanadkarni on 8/8/17.
+     */
 }
+
